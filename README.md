@@ -37,10 +37,10 @@ Two workflows are supported:
 
 - `SKILL.md` — entry point: core principles, the decision framework, and the
   build sequence.
-- `foundations.md` — history, key figures, and the philosophy behind the rules.
-- `typography.md` — typefaces, type scales, measure, hierarchy, leading.
-- `grid-systems.md` — grid theory and its translation to responsive CSS Grid.
-- `color-and-tokens.md` — restrained palettes and the design-token system.
-- `implementation.md` — turning the system into code in any stack.
-- `redesign-playbook.md` — auditing/converting existing designs, anti-patterns,
+- `references/foundations.md` — history, key figures, and the philosophy behind the rules.
+- `references/typography.md` — typefaces, type scales, measure, hierarchy, leading.
+- `references/grid-systems.md` — grid theory and its translation to responsive CSS Grid.
+- `references/color-and-tokens.md` — restrained palettes and the design-token system.
+- `references/implementation.md` — turning the system into code in any stack.
+- `references/redesign-playbook.md` — auditing/converting existing designs, anti-patterns,
   and the final QA checklist.

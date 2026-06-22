@@ -14,10 +14,31 @@ that system first and then build on it — for a brand-new site/app/component, o
 by converting an existing interface into the style. It's technology-agnostic:
 plain HTML/CSS, Tailwind, React, Vue, Svelte, or any design-token setup.
 
+## Install
+
+Run this in a terminal — it detects which supported agents you have installed
+(**Claude Code**, **Codex**, **OpenCode**), lets you pick which ones to target,
+and installs the skill into each one's skills directory:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/BurgiSimon/swiss-design-mirror/main/install.sh)
+```
+
+It installs into the standard per-tool locations:
+
+| Tool | Skill directory |
+|---|---|
+| Claude Code | `~/.claude/skills/swiss-design/` |
+| Codex | `~/.codex/skills/swiss-design/` |
+| OpenCode | `~/.config/opencode/skills/swiss-design/` |
+
+An existing install is backed up (`swiss-design.bak-<timestamp>`) rather than
+overwritten. After installing, start a new session so the agent discovers it.
+
 ## How to use it
 
-Just ask Claude for the kind of work it covers, and it loads automatically.
-Triggers include:
+Just ask your AI agent for the kind of work it covers, and it loads
+automatically. Triggers include:
 
 - "Make this **Swiss style** / International Typographic Style"
 - "Build a **grid-based / grid-driven** layout"

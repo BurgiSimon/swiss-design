@@ -1,0 +1,134 @@
+@import 'tailwindcss';
+
+/*
+  THE PROGRAMME.
+  Every screen on this site is an instance of these tokens. They are defined
+  before any layout, per the swiss-design skill's "system before screen" rule.
+  Values are taken verbatim from the skill's color-and-tokens.md / implementation.md,
+  using the expressive (landing/editorial) preset: type ratio 1.333, base 16px.
+*/
+@theme {
+  /* type — one neo-grotesque, variable Inter */
+  --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* type scale — base 16px x ratio 1.333 (Perfect Fourth) */
+  --text-caption: 0.75rem; /* 12px  — captions, labels, meta */
+  --text-base: 1rem; /* 16px  — body */
+  --text-h4: 1.333rem; /* ~21px */
+  --text-h3: 1.777rem; /* ~28px */
+  --text-h2: 2.369rem; /* ~38px */
+  --text-h1: 3.157rem; /* ~51px */
+  --text-display: 4.209rem; /* ~67px — bounded fluid floor; see clamp below */
+
+  /* line-heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-body: 1.55;
+
+  /* palette — ink, paper, two grays, exactly one accent */
+  --color-ink: #111111;
+  --color-paper: #ffffff;
+  --color-gray-1: #6b6b6b; /* secondary text — passes AA on paper */
+  --color-gray-2: #d4d4d4; /* hairline rules / dividers */
+  --color-accent: #e2231a; /* the one accent — Swiss/International red */
+
+  /* grid */
+  --gutter: 1.5rem;
+  --margin: 2rem;
+  --measure: 60ch;
+  --canvas-max: 80rem;
+}
+
+/* base — set on the body so the whole document inherits the system */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    color: var(--color-ink);
+    background: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'tnum' 0;
+  }
+
+  /* real heading order; hierarchy from size/weight/space only */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  /* the accent is a natural focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+}
+
+@layer utilities {
+  /* fluid hero display — bounded clamp() per typography.md (don't build the
+     whole scale on vw, just the display step) */
+  .text-fluid-display {
+    font-size: clamp(2.75rem, 1.5rem + 6.25vw, 7rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+
+  /* tight tracking for large neo-grotesque headings */
+  .tracking-display {
+    letter-spacing: -0.02em;
+  }
+
+  /* tabular figures for data/labels — a functional Swiss touch */
+  .nums-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .measure {
+    max-width: var(--measure);
+  }
+
+  /*
+    Grid placement driven by CSS variables so spans can be fully dynamic without
+    tripping Tailwind's class scanner. Col.jsx sets --col-sm/-md/-lg to values
+    like "1 / span 7"; each breakpoint falls back to the smaller one.
+  */
+  .col {
+    grid-column: var(--col-sm, auto);
+  }
+  @media (min-width: 48rem) {
+    .col {
+      grid-column: var(--col-md, var(--col-sm, auto));
+    }
+  }
+  @media (min-width: 64rem) {
+    .col {
+      grid-column: var(--col-lg, var(--col-md, var(--col-sm, auto)));
+    }
+  }
+}
+
+/* respect reduced-motion at the CSS layer too (JS guards the heavy effects) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

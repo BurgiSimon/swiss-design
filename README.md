@@ -21,7 +21,7 @@ Run this in a terminal — it detects which supported agents you have installed
 and installs the skill into each one's skills directory:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/BurgiSimon/swiss-design-mirror/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/BurgiSimon/swiss-design/main/install.sh)
 ```
 
 It installs into the standard per-tool locations:

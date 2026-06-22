@@ -1,6 +1,6 @@
 # Swiss Design Skill
 
-A Claude skill for designing and building web UI in the **Swiss Style /
+A AI skill for designing and building web UI in the **Swiss Style /
 International Typographic Style** — the grid-driven, neo-grotesque,
 restrained-palette modernist tradition of Müller-Brockmann, Gerstner, Hofmann,
 and Vignelli.
